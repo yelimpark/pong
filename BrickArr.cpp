@@ -9,17 +9,27 @@ BrickArr::BrickArr()
 	}
 }
 
-bool BrickArr::HanddleCollison(FloatRect fr)
+BRICK_COL_TYPE BrickArr::HanddleCollison(FloatRect fr)
 {
 	for (int i = 0; i < B_ROW; i++) {
 		for (int j = 0; j < B_COL; j++) {
-			if (brickArr[i][j] != nullptr && fr.intersects(brickArr[i][j]->GetGlobalBounds())) {
-				DeleteBrick(j, i);
-				return true;
+			if (brickArr[i][j] == nullptr) continue;
+
+			FloatRect birickbound = brickArr[i][j]->GetGlobalBounds();
+			Vector2f ballPos(fr.left + fr.width * 0.5f, fr.top + fr.height * 0.5);
+
+			if (birickbound.intersects(fr)) {
+				DeleteBrick(i, j);
+				if (birickbound.left > ballPos.x || birickbound.left + birickbound.width < ballPos.x) {
+					return BRICK_COL_TYPE::SIDE;
+				}
+				else {
+					return BRICK_COL_TYPE::TOP_OR_BOTTOM;
+				}
 			}
 		}
 	}
-	return false;
+	return BRICK_COL_TYPE::NONE;
 }
 
 void BrickArr::Render(RenderWindow& window)
@@ -37,7 +47,7 @@ bool BrickArr::IsBrickCountZero() const
 	return (CountBrick == 0);
 }
 
-void BrickArr::DeleteBrick(int col, int row)
+void BrickArr::DeleteBrick(int row, int col)
 {
 	if (brickArr[row][col] == nullptr) return;
 	delete brickArr[row][col];

@@ -20,6 +20,11 @@ const RectangleShape& Brick::GetShape()
 	return shape;
 }
 
+Vector2f& Brick::GetPos()
+{
+	return position;
+}
+
 Brick::~Brick()
 {
 }
