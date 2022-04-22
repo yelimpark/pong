@@ -87,13 +87,19 @@ int main()
         FloatRect ballbound = ball.GetGlobalBounds();
         Vector2u windowSize = window.getSize();
 
-        if (brickArr.HanddleCollison(ballbound) == BRICK_COL_TYPE::TOP_OR_BOTTOM) {
+        switch (brickArr.HanddleCollison(ballbound)) {
+        case BRICK_COL_TYPE::TOP_OR_BOTTOM:
             ball.ReboundBatorTop();
             ++score;
-        }
-        else if (brickArr.HanddleCollison(ballbound) == BRICK_COL_TYPE::SIDE) {
+            break;
+
+        case BRICK_COL_TYPE::SIDE:
             ball.ReboundsSides();
             ++score;
+            break;
+
+        default :
+            break;
         }
 
         bool colSide = ballbound.left < 0.f || ballbound.left + ballbound.width > windowSize.x;

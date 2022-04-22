@@ -59,7 +59,8 @@ BrickArr::~BrickArr()
 {
 	for (int i = 0; i < BRICK_ROW; i++) {
 		for (int j = 0; j < BRICK_COL; j++) {
-			delete brickArr[i][j];
+			if (brickArr[i][j] != nullptr)
+				delete brickArr[i][j];
 		}
 	}
 }
