@@ -1,6 +1,12 @@
 #pragma once
 #include "Brick.h"
 
+enum class BRICK_COL_TYPE {
+	SIDE,
+	TOP_OR_BOTTOM,
+	NONE
+};
+
 class BrickArr
 {
 private:
@@ -8,12 +14,12 @@ private:
 
 	int CountBrick = B_ROW * B_COL;
 
-	void DeleteBrick(int col, int row);
+	void DeleteBrick(int row, int col);
 
 public:
 	BrickArr();
 
-	bool HanddleCollison(FloatRect fr);
+	BRICK_COL_TYPE HanddleCollison(FloatRect fr);
 
 	void Render(RenderWindow& window);
 
