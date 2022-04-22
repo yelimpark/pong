@@ -19,6 +19,8 @@ public:
 
 	const RectangleShape& GetShape();
 
+	Vector2f& GetPos();
+
 	~Brick();
 };
 

@@ -51,13 +51,13 @@ int main()
         }
 
         if (isPause) {
-            if (brickArr.IsBrickCountZero()) {
-                break;
-            }
-            if (life <= 0) {
-                break;
-            }
             if (Keyboard::isKeyPressed(Keyboard::Return)) {
+                if (brickArr.IsBrickCountZero()) {
+                    break;
+                }
+                if (life <= 0) {
+                    break;
+                }
                 isPause = false;
             }
             continue;
@@ -78,9 +78,12 @@ int main()
         FloatRect ballbound = ball.GetGlobalBounds();
         Vector2u windowSize = window.getSize();
 
-        // 원래는 벽돌의 가로면, 세로면 별로 계산해서 해주어야 함.
-        if (brickArr.HanddleCollison(ballbound)) {
+        if (brickArr.HanddleCollison(ballbound) == BRICK_COL_TYPE::TOP_OR_BOTTOM) {
             ball.ReboundBatorTop();
+            ++score;
+        }
+        else if (brickArr.HanddleCollison(ballbound) == BRICK_COL_TYPE::SIDE) {
+            ball.ReboundsSides();
             ++score;
         }
 
