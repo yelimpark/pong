@@ -1,8 +1,11 @@
 ﻿#include <SFML/Graphics.hpp>
 #include "Bat.h"
 #include "Ball.h"
+#include <sstream>
 #include "BrickArr.h"
 #include <random>
+
+using namespace std;
 
 int main()
 {
@@ -12,11 +15,11 @@ int main()
     Ball ball(1920.f * 0.5f, 1080.f - 300.f);
     BrickArr brickArr;
 
-    Font fontKOMIKAP;
-    fontKOMIKAP.loadFromFile("fonts/DS-DIGI.TTF.ttf");
+    Font fontDSDIGI;
+    fontDSDIGI.loadFromFile("fonts/DS-DIGI.ttf");
 
     Text textMessage;
-    textMessage.setFont(fontKOMIKAP);
+    textMessage.setFont(fontDSDIGI);
     textMessage.setFillColor(Color::White);
     textMessage.setCharacterSize(75);
 
@@ -26,6 +29,13 @@ int main()
         textRect.top + textRect.height * 0.5f
     );
     textMessage.setPosition(1920 * 0.5f, 1080 * 0.5f);
+
+    Text textScore;
+    textScore.setFont(fontDSDIGI);
+    textScore.setString("Score = 0");
+    textScore.setFillColor(Color::Magenta);
+    textScore.setCharacterSize(80);
+    textScore.setPosition(1920.f * 0.8f, 20.f);
 
     Clock clock;
 
@@ -115,6 +125,10 @@ int main()
         bat.Update(deltaTime);
         ball.Update(deltaTime);
 
+        stringstream ss;
+        ss << "Score = " << score;
+        textScore.setString(ss.str());
+
         if (brickArr.IsBrickCountZero()) {
             textMessage.setString("YOU WON!!");
             isPause = true;
@@ -133,6 +147,7 @@ int main()
         brickArr.Render(window);
         window.draw(bat.GetShape());
         window.draw(ball.GetShape());
+        window.draw(textScore);
         window.display();
     }
 
