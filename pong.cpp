@@ -9,10 +9,10 @@ using namespace std;
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1920, 1080), "Pong!", Style::Fullscreen);
+    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Pong!", Style::Fullscreen);
 
-    Bat bat(1920.f * 0.5f, 1080.f - 20.f);
-    Ball ball(1920.f * 0.5f, 1080.f - 300.f);
+    Bat bat(WINDOW_WIDTH * 0.5f, WINDOW_HEIGHT - 20.f);
+    Ball ball(WINDOW_WIDTH * 0.5f, WINDOW_HEIGHT - 200.f);
     BrickArr brickArr;
 
     Font fontDSDIGI;
@@ -20,15 +20,8 @@ int main()
 
     Text textMessage;
     textMessage.setFont(fontDSDIGI);
-    textMessage.setFillColor(Color::White);
+    textMessage.setFillColor(Color::Magenta);
     textMessage.setCharacterSize(75);
-
-    FloatRect textRect = textMessage.getLocalBounds();
-    textMessage.setOrigin(
-        textRect.left + textRect.width * 0.5f,
-        textRect.top + textRect.height * 0.5f
-    );
-    textMessage.setPosition(1920 * 0.5f, 1080 * 0.5f);
 
     Text textScore;
     textScore.setFont(fontDSDIGI);
@@ -37,6 +30,13 @@ int main()
     textScore.setCharacterSize(80);
     textScore.setPosition(1920.f * 0.8f, 20.f);
 
+    Text textLife;
+    textLife.setFont(fontDSDIGI);
+    textLife.setString("Life = 3");
+    textLife.setFillColor(Color::Magenta);
+    textLife.setCharacterSize(80);
+    textLife.setPosition(1920.f * 0.8f, 80.f);
+
     Clock clock;
 
     bool prevColSide = false;
@@ -44,7 +44,6 @@ int main()
     bool prevColBat = false;
 
     bool isPause = false;
-    // life와 score 화면에 띄워주는 것 구현해야 함
     int life = 3;
     int score = 0;
 
@@ -132,25 +131,37 @@ int main()
         ss << "Score = " << score;
         textScore.setString(ss.str());
 
+        stringstream ss2;
+        ss2 << "Life = " << life;
+        textLife.setString(ss2.str());
+
         if (brickArr.IsBrickCountZero()) {
-            textMessage.setString("YOU WON!!");
+            textMessage.setString("YOU WON!!\n Press Enter To Terminate.");
             isPause = true;
         }
         if (life <= 0) {
-            textMessage.setString("YOU LOOSE!!");
+            textMessage.setString("YOU LOOSE!!\n Press Enter To Terminate.");
             isPause = true;
         }
 
         window.clear();
 
-        if (isPause) {
-            window.draw(textMessage);
-        }
-
         brickArr.Render(window);
         window.draw(bat.GetShape());
         window.draw(ball.GetShape());
         window.draw(textScore);
+        window.draw(textLife);
+
+        if (isPause) {
+            FloatRect textRect = textMessage.getLocalBounds();
+            textMessage.setOrigin(
+                textRect.left + textRect.width * 0.5f,
+                textRect.top + textRect.height * 0.5f
+            );
+            textMessage.setPosition(WINDOW_WIDTH * 0.5f, WINDOW_HEIGHT * 0.5f);
+            window.draw(textMessage);
+        }
+
         window.display();
     }
 

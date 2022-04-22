@@ -2,17 +2,17 @@
 
 BrickArr::BrickArr()
 {
-	for (int i = 0; i < B_ROW; i++) {
-		for (int j = 0; j < B_COL; j++) {
-			brickArr[i][j] = new Brick(j * B_WIDTH, i * B_HEIGHT);
+	for (int i = 0; i < BRICK_ROW; i++) {
+		for (int j = 0; j < BRICK_COL; j++) {
+			brickArr[i][j] = new Brick(j * BRICK_WIDTH, i * BRICK_HEIGHT);
 		}
 	}
 }
 
 BRICK_COL_TYPE BrickArr::HanddleCollison(FloatRect fr)
 {
-	for (int i = 0; i < B_ROW; i++) {
-		for (int j = 0; j < B_COL; j++) {
+	for (int i = 0; i < BRICK_ROW; i++) {
+		for (int j = 0; j < BRICK_COL; j++) {
 			if (brickArr[i][j] == nullptr) continue;
 
 			FloatRect birickbound = brickArr[i][j]->GetGlobalBounds();
@@ -34,8 +34,8 @@ BRICK_COL_TYPE BrickArr::HanddleCollison(FloatRect fr)
 
 void BrickArr::Render(RenderWindow& window)
 {
-	for (int i = 0; i < B_ROW; i++) {
-		for (int j = 0; j < B_COL; j++) {
+	for (int i = 0; i < BRICK_ROW; i++) {
+		for (int j = 0; j < BRICK_COL; j++) {
 			if (brickArr[i][j] != nullptr)
 				window.draw(brickArr[i][j]->GetShape());
 		}
@@ -57,8 +57,8 @@ void BrickArr::DeleteBrick(int row, int col)
 
 BrickArr::~BrickArr()
 {
-	for (int i = 0; i < B_ROW; i++) {
-		for (int j = 0; j < B_COL; j++) {
+	for (int i = 0; i < BRICK_ROW; i++) {
+		for (int j = 0; j < BRICK_COL; j++) {
 			delete brickArr[i][j];
 		}
 	}

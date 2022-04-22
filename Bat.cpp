@@ -1,7 +1,7 @@
 #include "Bat.h"
 
 Bat::Bat(float x, float y)
-	:originalPosition(x, y), position(x, y)
+	:originalPosition(x - 500*0.5f, y), position(x - 500 * 0.5f, y)
 {
 	shape.setSize(Vector2f(500, 5));
 	shape.setPosition(position);

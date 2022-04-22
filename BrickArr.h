@@ -10,9 +10,9 @@ enum class BRICK_COL_TYPE {
 class BrickArr
 {
 private:
-	Brick* brickArr[B_ROW][B_COL];
+	Brick* brickArr[BRICK_ROW][BRICK_COL];
 
-	int CountBrick = B_ROW * B_COL;
+	int CountBrick = BRICK_ROW * BRICK_COL;
 
 	void DeleteBrick(int row, int col);
 
