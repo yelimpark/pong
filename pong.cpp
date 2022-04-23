@@ -1,9 +1,10 @@
 ﻿#include <SFML/Graphics.hpp>
-#include "Bat.h"
-#include "Ball.h"
 #include <sstream>
-#include "BrickArr.h"
 #include <random>
+
+#include "./GameObj/Ball.h"
+#include "./GameObj/Bat.h"
+#include "./GameObj/BrickArr.h"
 
 using namespace std;
 

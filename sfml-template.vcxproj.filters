@@ -13,39 +13,45 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\GameObj">
+      <UniqueIdentifier>{e710af4d-bd75-4ace-ba0f-7457a09a09af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\GameObj">
+      <UniqueIdentifier>{64debafa-8638-444e-b7c6-bcdd8d8e1e36}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pong.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Bat.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="GameObj\Ball.cpp">
+      <Filter>소스 파일\GameObj</Filter>
     </ClCompile>
-    <ClCompile Include="Ball.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="GameObj\Bat.cpp">
+      <Filter>소스 파일\GameObj</Filter>
     </ClCompile>
-    <ClCompile Include="Brick.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="GameObj\Brick.cpp">
+      <Filter>소스 파일\GameObj</Filter>
     </ClCompile>
-    <ClCompile Include="BrickArr.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="GameObj\BrickArr.cpp">
+      <Filter>소스 파일\GameObj</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bat.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Ball.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Brick.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="BrickArr.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Macro.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObj\Ball.h">
+      <Filter>헤더 파일\GameObj</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObj\Bat.h">
+      <Filter>헤더 파일\GameObj</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObj\Brick.h">
+      <Filter>헤더 파일\GameObj</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObj\BrickArr.h">
+      <Filter>헤더 파일\GameObj</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
