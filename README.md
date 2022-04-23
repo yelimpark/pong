@@ -20,6 +20,10 @@ move bat with ⬅️ ➡️
 * Ye Lim Park
 * Song Ha Jeong
 
+## Reference
+
+https://github.com/PacktPublishing/Beginning-Cpp-Game-Programming-Second-Edition
+
 -------
 
 in 2022 KGA mobile game class
