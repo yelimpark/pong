@@ -22,7 +22,7 @@ move bat with ⬅️ ➡️
 
 ## Reference
 
-https://github.com/PacktPublishing/Beginning-Cpp-Game-Programming-Second-Edition
+<a href="https://github.com/PacktPublishing/Beginning-Cpp-Game-Programming-Second-Edition">Beginning C++ Game Programming - Second Edition</a>
 
 -------
 
